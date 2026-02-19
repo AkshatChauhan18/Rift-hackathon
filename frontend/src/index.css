@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AUTONOMOUS CI/CD HEALING AGENT — DESIGN SYSTEM
+   Dark DevOps Dashboard Theme
+   All colors are HSL.
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ── Core surfaces ── */
+    --background:        220 40% 4%;
+    --foreground:        210 30% 96%;
+
+    --card:              220 35% 7%;
+    --card-foreground:   210 30% 96%;
+
+    --popover:           220 35% 7%;
+    --popover-foreground: 210 30% 96%;
+
+    /* ── Brand: electric cyan ── */
+    --primary:           188 100% 48%;
+    --primary-foreground: 220 40% 4%;
+
+    /* ── Secondary: emerald green ── */
+    --secondary:         155 70% 38%;
+    --secondary-foreground: 210 30% 96%;
+
+    /* ── Muted ── */
+    --muted:             220 30% 12%;
+    --muted-foreground:  215 20% 55%;
+
+    /* ── Accent: amber/warning ── */
+    --accent:            38 95% 55%;
+    --accent-foreground: 220 40% 4%;
+
+    /* ── Destructive: red ── */
+    --destructive:       0 78% 55%;
+    --destructive-foreground: 210 30% 96%;
+
+    /* ── Borders & inputs ── */
+    --border:            220 25% 14%;
+    --input:             220 25% 14%;
+    --ring:              188 100% 48%;
+
+    --radius: 0.6rem;
+
+    /* ── Custom semantic tokens ── */
+    --surface-1:         220 35% 7%;
+    --surface-2:         220 30% 10%;
+    --surface-3:         220 28% 13%;
+
+    --success:           142 71% 45%;
+    --success-foreground: 220 40% 4%;
+    --warning:           38 95% 55%;
+    --warning-foreground: 220 40% 4%;
+    --danger:            0 78% 55%;
+    --danger-foreground: 210 30% 96%;
+
+    --cyan-glow:         188 100% 48%;
+    --green-glow:        142 71% 45%;
+    --amber-glow:        38 95% 55%;
+    --red-glow:          0 78% 55%;
+
+    /* ── Gradients ── */
+    --gradient-hero:     linear-gradient(135deg, hsl(220 40% 4%), hsl(220 35% 8%), hsl(188 60% 6%));
+    --gradient-card:     linear-gradient(135deg, hsl(220 35% 7%), hsl(220 30% 9%));
+    --gradient-primary:  linear-gradient(135deg, hsl(188 100% 48%), hsl(188 90% 38%));
+    --gradient-success:  linear-gradient(135deg, hsl(142 71% 45%), hsl(155 70% 35%));
+    --gradient-danger:   linear-gradient(135deg, hsl(0 78% 55%), hsl(0 65% 42%));
+
+    /* ── Shadows / glows ── */
+    --shadow-card:       0 4px 24px hsl(220 40% 2% / 0.6);
+    --shadow-primary:    0 0 20px hsl(188 100% 48% / 0.3), 0 0 40px hsl(188 100% 48% / 0.1);
+    --shadow-success:    0 0 20px hsl(142 71% 45% / 0.3);
+    --shadow-danger:     0 0 20px hsl(0 78% 55% / 0.3);
+
+    /* ── Typography ── */
+    --font-mono:         'JetBrains Mono', 'Courier New', monospace;
+    --font-sans:         'Inter', system-ui, sans-serif;
+
+    /* ── Sidebar (kept for compat) ── */
+    --sidebar-background: 220 35% 6%;
+    --sidebar-foreground: 210 30% 96%;
+    --sidebar-primary:    188 100% 48%;
+    --sidebar-primary-foreground: 220 40% 4%;
+    --sidebar-accent:     220 30% 12%;
+    --sidebar-accent-foreground: 210 30% 96%;
+    --sidebar-border:     220 25% 14%;
+    --sidebar-ring:       188 100% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(ellipse at 20% 20%, hsl(188 100% 48% / 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, hsl(142 71% 45% / 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* ── Utility classes ── */
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .bg-surface-1 { background-color: hsl(var(--surface-1)); }
+  .bg-surface-2 { background-color: hsl(var(--surface-2)); }
+  .bg-surface-3 { background-color: hsl(var(--surface-3)); }
+
+  .text-cyan    { color: hsl(var(--cyan-glow)); }
+  .text-success { color: hsl(var(--success)); }
+  .text-warning { color: hsl(var(--warning)); }
+  .text-danger  { color: hsl(var(--danger)); }
+
+  .glow-primary  { box-shadow: var(--shadow-primary); }
+  .glow-success  { box-shadow: var(--shadow-success); }
+  .glow-danger   { box-shadow: var(--shadow-danger); }
+
+  .gradient-hero    { background: var(--gradient-hero); }
+  .gradient-card    { background: var(--gradient-card); }
+  .gradient-primary { background: var(--gradient-primary); }
+  .gradient-success { background: var(--gradient-success); }
+
+  .card-base {
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius);
+  }
+
+  .status-passed {
+    color: hsl(var(--success));
+    background: hsl(var(--success) / 0.12);
+    border: 1px solid hsl(var(--success) / 0.35);
+  }
+
+  .status-failed {
+    color: hsl(var(--danger));
+    background: hsl(var(--danger) / 0.12);
+    border: 1px solid hsl(var(--danger) / 0.35);
+  }
+
+  .status-pending {
+    color: hsl(var(--warning));
+    background: hsl(var(--warning) / 0.12);
+    border: 1px solid hsl(var(--warning) / 0.35);
+  }
+
+  .terminal-border {
+    border: 1px solid hsl(var(--primary) / 0.25);
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.08), inset 0 1px 0 hsl(var(--primary) / 0.08);
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px hsl(var(--primary) / 0.3); }
+    50%       { box-shadow: 0 0 25px hsl(var(--primary) / 0.6), 0 0 50px hsl(var(--primary) / 0.2); }
+  }
+
+  .animate-scan {
+    animation: scan 3s linear infinite;
+  }
+
+  @keyframes scan {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 2px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.5); }
+}
+
